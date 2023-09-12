@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function App() {
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(10);
 
   const add = () => setNumber((number) => number + 1);
   const subtract = () => setNumber((number) => number - 1);
