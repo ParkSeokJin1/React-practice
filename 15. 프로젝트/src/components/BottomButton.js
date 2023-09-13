@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "./BottomButton.module.css"
 
-export default function BottomButton() {
-  return <button>BottomButton</button>;
+export default function BottomButton(props) {
+  return <button onClick={props.onClick} className={styles.button}>BottomButton</button>;
 }
