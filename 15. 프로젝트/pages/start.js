@@ -4,7 +4,7 @@ import { fetchUser } from "../src/modules/api";
 import BottomButton from "../src/components/BottomButton";
 
 export default function start() {
-   const [name, setName] = useState("프로그래머스")
+   const [name, setName] = useState("무신사스토어")
    const router = useRouter()
   useEffect(() => {
     async function fetch() {

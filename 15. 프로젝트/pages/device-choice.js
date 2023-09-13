@@ -5,6 +5,13 @@ import BottomButton from "../src/components/BottomButton";
 export default function deviceChoice() {
   const router = useRouter();
   const [selectedDevice, setSelectedDevice] = useState('')
+
+
+  const goNextPage = () => {
+    localStorage.setItem('selected_device', selectedDevice)
+    router.push('/accessory-choice')
+  }
+
   
   const onChangeHandler = (e) => {
     setSelectedDevice(e.target.value)
@@ -32,7 +39,7 @@ export default function deviceChoice() {
 
 
 
-    <BottomButton onClick={() => router.push('/accessory-choice') }>
+    <BottomButton onClick={goNextPage}>
       악세서리 선택 화면으로 넘어가기
       </BottomButton>
       </div>
