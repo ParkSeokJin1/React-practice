@@ -1,39 +1,25 @@
-import { useSelector, useDispatch } from "react-redux";
-import { fetchUser } from "../src/modules/account/api";
-import {
-  fetchUserRequest,
-  fetchUserSuccess,
-  fetchUserFailure,
-  fetchUserThunk
-} from "./modules/account/account";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Edit from "./pages/Edit";
+import { QueryClientProvider, QueryClient } from "react-query";
+import {Suspense } from 'react'
+
+const queryClient = new QueryClient()
 
 function App() {
-  const account = useSelector((state) => state.account);
-  const { loading, name, email } = account;
-  const dispatch = useDispatch();
-
-  
-  const handleClick = () => {
-    dispatch(fetchUserThunk)
-  }
-
-  console.log(account)
-
-
-
-
   return (
-    <div className="App">
-      <button onClick={handleClick}>User 정보 가져오기</button>
-      {loading ? (
-        <p>loading...</p>
-      ) : name && email ? (
-        <>
-          <p>이름 : {name}</p>
-          <p>이메일 : {email}</p>
-        </>
-      ) : null}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<span>Loading...</span>}>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/edit" element={<Edit />} />
+      </Routes>
+    </BrowserRouter>
+      </Suspense>
+      
+    </QueryClientProvider>
+    
   );
 }
 
